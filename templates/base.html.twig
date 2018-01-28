@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+
+
+		{# you can read and display just one flash message type... #}
+		{% for message in app.flashes('messages') %}
+		    <div class="flash-notice">
+		        {{ message }}
+		    </div>
+		{% endfor %}
+
+
+
+		{# ...or you can read and display every flash message available #}
+		{% for label, messages in app.flashes %}
+		    {% for message in messages %}
+		        <div class="flash-{{ label }}">
+		            {{ message }}
+		        </div>
+		    {% endfor %}
+		{% endfor %}
+
+
+
+
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
